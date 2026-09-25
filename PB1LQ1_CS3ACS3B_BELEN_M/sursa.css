@@ -1,0 +1,148 @@
+/* Body*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;  /* Simple font */
+  background-color: #1e1b2e;/* Dark background */
+  color: white;
+}
+
+/* Main page container */
+.container {
+  width: 90%;
+  max-width: 850px;
+  margin: 30px auto;
+}
+
+/* HEADER */
+
+.header {
+  text-align: center;
+  background-color: #4a0d8a;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0 0 10px 0;
+}
+
+.header p {
+  margin: 0;
+  color: #ddd;
+}
+
+/*CARD */
+.form {
+  background-color: #2b2740;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form h2 {
+  margin-top: 0;
+  color: #d9b3ff;
+}
+
+/* Description text */
+.description {
+  color: #bbb;
+}
+
+/*FORM */
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #403a59;
+  color: white;
+  font-size: 14px;
+}
+
+/* Input focus */
+input:focus,
+select:focus {
+  outline: 2px solid #9b59d6;
+}
+
+/*BUTTON*/
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background-color: #7b2cbf;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #9d4edd;
+}
+
+/*RESULTS */
+
+.result-card {
+  margin-top: 20px;
+}
+
+/* Result labels */
+.result-label {
+  font-weight: bold;
+  color: #c77dff;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+/* Result boxes */
+.result-box {
+  background-color: #171525;
+  padding: 15px;
+  border-radius: 8px;
+  word-wrap: break-word;  /* Allows long encrypted text to wrap */
+  white-space: pre-wrap;
+  line-height: 1.5;
+  color: #eeeeee;
+}
+
+/* Public/private key boxes */
+.key-box {
+  font-size: 12px;
+}
+
+/*Encrypted data */
+.encrypted {
+  color: #ffcc70;
+}
+
+/* Decrypted data */
+.decrypted {
+  color: #8ff0a4;
+}
+
+/* Status*/
+.status {
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: #302b48;
+  border-radius: 10px;
+  color: #d9b3ff;
+}

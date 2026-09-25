@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RSA Enrollment - 3072 Bit</title>
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="sursa.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!--header-->
+      <div class="header">
+        <h1>RSA Enrollment</h1>
+        <p>RSA Encryption and Decryption</p>
+      </div>
+      <!-- Enrollment form -->
+      <div class="form">
+        <h2>Enrollment / Signup Form</h2>
+        <p class="description">
+          Enter your information below to encrypt and decrypt the enrollment
+          data using RSA.
+        </p>
+
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" />
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" />
+
+        <label for="yearlevel">Year Level</label>
+        <select id="yearlevel">
+          <option value="">Select Year Level</option>
+          <option value="1st Year">1st Year</option>
+          <option value="2nd Year">2nd Year</option>
+          <option value="3rd Year">3rd Year</option>
+          <option value="4th Year">4th Year</option>
+        </select>
+
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" />
+
+        <button id="encryptBtn">ENROLL / SIGN UP</button>
+      </div>
+
+      <!-- Encryption result -->
+      <div class="form result-card">
+        <h2>Encryption Result</h2>
+        <p class="result-label">ORIGINAL DATA</p>
+
+        <div id="originalData" class="result-box">No data yet.</div>
+        <p class="result-label">PUBLIC KEY</p>
+
+        <div id="publicKey" class="result-box key-box">No key yet.</div>
+        <p class="result-label">ENCRYPTED DATA</p>
+
+        <div id="encryptedData" class="result-box encrypted">
+          No encrypted data yet.
+        </div>
+      </div>
+
+      <!-- Decryption result -->
+      <div class="form result-card">
+        <h2>Decryption Result</h2>
+        <p class="result-label">PRIVATE KEY</p>
+
+        <div id="privateKey" class="result-box key-box">No key yet.</div>
+        <p class="result-label">DECRYPTED DATA</p>
+
+        <div id="decryptedData" class="result-box decrypted">
+          No decrypted data yet.
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div id="status" class="status">Waiting for enrollment...</div>
+    </div>
+
+    <!-- JSEncrypt library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsencrypt@latest/bin/jsencrypt.min.js"></script>
+
+    <!-- Connect JavaScript -->
+    <script src="sursa.js"></script>
+  </body>
+</html>
