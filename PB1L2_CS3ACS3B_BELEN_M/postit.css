@@ -1,0 +1,135 @@
+/* body */
+body {
+  margin: 0;
+  font-family: Arial;
+  background-color: #2a1b3d;
+  color: #c2b5de;
+}
+
+/*container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Main title */
+h1 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/*subtitle */
+.subtitle {
+  text-align: center;
+  color: beige;
+  margin-bottom: 30px;
+}
+
+/* Section design */
+section {
+  background-color: #3b2854;
+  border: 1px solid #c2b5de;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Section headings */
+h2 {
+  margin-top: 0;
+}
+
+/* Input design */
+input,
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #c2b5de;
+  border-radius: 10px;
+  background-color: #21162f;
+  color: white;
+}
+
+/* Textarea */
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* Placeholder text */
+input::placeholder,
+textarea::placeholder {
+  color: #c2b5de;
+}
+
+/* Button design */
+button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background-color: royalblue;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Button hover */
+button:hover {
+  background-color: black;
+  color: pink;
+}
+
+/* Hide elements */
+.hidden {
+  display: none;
+}
+
+/* Welcome message */
+#welcomeUser {
+  color: beige;
+}
+
+/* Individual post */
+.post {
+  background-color: #21162f;
+  border: 1px solid #c2b5de;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+/* original post label */
+.original {
+  color: #c2b5de;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/*caption */
+.caption {
+  background-color: #3b2854;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* encrypted value */
+.encrypted {
+  background-color: #17101f;
+  padding: 12px;
+  border-radius: 10px;
+  word-break: break-word;
+  color: #c2b5de;
+  font-size: 13px;
+}
+
+/* Date */
+.post-date {
+  font-size: 13px;
+  color: beige;
+  margin-bottom: 10px;
+}

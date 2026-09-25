@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSTIT</title>
+
+    <!-- Connects to the CSS file -->
+    <link rel="stylesheet" href="postit.css">
+</head>
+<body>
+    <!--container -->
+    <div class="container">
+        <!--title -->
+        <h1>PostIt</h1>
+        <p class="subtitle">
+            Post your thoughts and see them protected.
+        </p>
+
+        <!--User Informations-->
+        <section id="userSection" class="user-section">
+            <h2>User Information</h2>
+            <p>Please enter your information before posting.</p>
+
+            <!--Full Name -->
+            <input id="fullName" type="text" placeholder="Full Name">
+
+            <!--Date of Birth -->
+            <input id="birthDate" type="date">
+
+            <!--Year Level -->
+            <input id="yearLevel" type="text" placeholder="Year Level">
+
+            <!--Gender -->
+            <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+            <!-- Username -->
+            <input id="username" type="text" placeholder="Username">
+
+            <!--Password -->
+            <input id="password" type="password" placeholder="Password">
+
+            <!--Button to save user information -->
+            <button id="saveUserBtn">
+                Continue
+            </button>
+        </section>
+
+        <!-- Posting Section -->
+        <section id="postSection" class="post-section hidden">
+            <h2>Create a Post</h2>
+            <!--Shows the current user -->
+            <p id="welcomeUser"></p>
+
+            <!--Caption input -->
+            <textarea
+                id="postInput"
+                placeholder="Write your caption..."
+            ></textarea>
+
+            <!-- Post button -->
+            <button id="postBtn">
+                Post
+            </button>
+        </section>
+
+        <!-- Thread Section -->
+        <section class="thread-section">
+            <h2>Your Posts</h2>
+
+            <!--Posts will appear here -->
+            <div id="posts"></div>
+        </section>
+    </div>
+
+    <!-- Cloudflare CryptoJS Library -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js">
+    </script>
+
+    <!-- Connects the JavaScript file -->
+    <script src="postit.js"></script>
+</body>
+</html>
