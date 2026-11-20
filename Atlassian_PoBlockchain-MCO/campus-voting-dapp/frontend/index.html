@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CampusVote | Student Election</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Ethers.js Version 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">CV</div>
+        <div>
+          <h2>CampusVote</h2>
+          <span>Decentralized Voting System</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#voter">Voter</a>
+        <a href="#candidates">Candidates</a>
+        <a href="#results">Results</a>
+        <a href="#admin-login">Admin</a>
+      </nav>
+
+      <button id="connectButton" class="connect-btn">Connect Wallet</button>
+    </header>
+
+    <main>
+      <!-- HOME SECTION -->
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">CAMPUS ELECTION 2026</span>
+
+          <h1>
+            Your Voice.<br />
+            Your Vote.<br />
+            <span>Your Campus.</span>
+          </h1>
+
+          <p>
+            A secure and transparent digital voting platform powered by
+            blockchain technology. Participate in your campus election with
+            confidence.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#voter" class="primary-btn"> Get Started </a>
+
+            <a href="#candidates" class="secondary-btn"> View Candidates </a>
+          </div>
+        </div>
+
+        <!-- ELECTION STATUS -->
+        <div class="status-card">
+          <div class="status-top">
+            <div class="status-icon">✓</div>
+            <span class="live-label">ELECTION STATUS</span>
+          </div>
+
+          <h2>Election Overview</h2>
+
+          <div class="status-row">
+            <span>Current Status</span>
+            <strong id="electionStatus">Not Started</strong>
+          </div>
+
+          <div class="status-row">
+            <span>Total Votes</span>
+            <strong id="totalVotes">0</strong>
+          </div>
+
+          <div class="wallet-info">
+            <span>Connected Wallet</span>
+            <p id="walletStatus">Wallet not connected</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VOTER PORTAL -->
+      <section id="voter" class="section">
+        <div class="section-title">
+          <span>VOTER PORTAL</span>
+          <h2>Voter Registration & Login</h2>
+          <p>
+            Register your information and connect your authorized MetaMask
+            wallet.
+          </p>
+        </div>
+
+        <div class="two-column">
+          <!-- REGISTRATION FORM -->
+          <div class="panel">
+            <div class="panel-heading">
+              <div class="panel-icon">＋</div>
+              <div>
+                <h3>Voter Registration</h3>
+                <p>Register your voter information.</p>
+              </div>
+            </div>
+
+            <form id="registrationForm">
+              <label for="voterName">Full Name</label>
+              <input
+                type="text"
+                id="voterName"
+                placeholder="Enter your full name"
+                required
+              />
+
+              <label for="studentId">Student ID</label>
+              <input
+                type="text"
+                id="studentId"
+                placeholder="Enter your student ID"
+                required
+              />
+
+              <label for="voterEmail">Email Address</label>
+              <input
+                type="email"
+                id="voterEmail"
+                placeholder="Enter your email"
+                required
+              />
+
+              <div class="form-group">
+                <label for="connectedVoterAddress"
+                  >Connected Wallet Address</label
+                >
+                <input
+                  type="text"
+                  id="connectedVoterAddress"
+                  placeholder="Connect your MetaMask wallet first"
+                  readonly
+                />
+              </div>
+
+              <button type="submit" class="primary-btn full-btn">
+                Register as Voter
+              </button>
+            </form>
+
+            <p class="helper-text">
+              Registration does not automatically authorize your wallet to vote.
+              The Electoral Admin must authorize your wallet address.
+            </p>
+          </div>
+
+          <!-- VOTER LOGIN -->
+          <div class="panel login-panel">
+            <div class="large-icon">👨🏻</div>
+
+            <h3>Voter Login</h3>
+
+            <p>
+              Already registered? Connect your MetaMask wallet to access the
+              election.
+            </p>
+
+            <button
+              type="button"
+              class="primary-btn full-btn"
+              onclick="connectWallet()"
+            >
+              Connect MetaMask
+            </button>
+
+            <div class="security-note">
+              <strong>Secure Wallet Access</strong>
+              <p>
+                Only authorized wallet addresses can participate in the
+                election.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CANDIDATES AND VOTING -->
+      <section id="candidates" class="section light-section">
+        <div class="section-title">
+          <span>STUDENT COUNCIL ELECTION</span>
+          <h2>Meet the Candidates</h2>
+          <p>Review the candidates and choose your preferred representative.</p>
+        </div>
+
+        <!-- VOTING NOTICE -->
+        <div class="voting-notice">
+          <div class="notice-icon">!</div>
+
+          <div>
+            <h3>Before You Vote</h3>
+            <p>
+              Each authorized wallet is allowed to vote only once. Make sure you
+              have selected your preferred candidate before confirming your
+              blockchain transaction.
+            </p>
+          </div>
+        </div>
+
+        <!-- CANDIDATE LIST -->
+        <div class="ballot-container">
+          <div class="ballot-heading">
+            <div>
+              <h3>Official Voting Ballot</h3>
+              <p>Select your preferred candidate below.</p>
+            </div>
+
+            <span class="ballot-label">STUDENT COUNCIL</span>
+          </div>
+
+          <div id="candidateList" class="candidate-grid">
+            <div class="empty-state">
+              <div class="empty-icon">👨🏻</div>
+              <h3>No Candidates Available</h3>
+              <p>
+                Candidate information will appear here after the Electoral Admin
+                adds candidates.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="vote-reminder">
+          <strong>Remember:</strong>
+          Once your vote is confirmed on the blockchain, it cannot be changed or
+          submitted again using the same wallet.
+        </div>
+      </section>
+
+      <!-- ELECTION RESULTS -->
+      <section id="results" class="section">
+        <div class="section-title">
+          <span>OFFICIAL ELECTION TABULATION</span>
+          <h2>Election Results</h2>
+          <p>
+            Final vote counts will become available after the Electoral Admin
+            closes the election.
+          </p>
+        </div>
+
+        <div class="results-panel">
+          <div class="results-heading">
+            <div>
+              <h3>Official Vote Summary</h3>
+              <p>Student Council Election</p>
+            </div>
+
+            <span class="blockchain-label"> BLOCKCHAIN VERIFIED </span>
+          </div>
+
+          <div id="resultsMessage" class="results-message">
+            <strong>Results Not Yet Available</strong>
+            <p>
+              The election is still ongoing or has not started. Final results
+              will appear here after voting closes.
+            </p>
+          </div>
+
+          <div id="resultsList">
+            <!-- Final candidate results will appear here -->
+          </div>
+
+          <div class="total-box">
+            <span>Total Votes Cast</span>
+            <h2 id="resultTotalVotes">0</h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- ELECTORAL ADMIN LOGIN -->
+      <section id="admin-login" class="section light-section">
+        <div class="section-title">
+          <span>AUTHORIZED PERSONNEL</span>
+          <h2>Electoral Admin Login</h2>
+          <p>Restricted access for the designated Electoral Administrator.</p>
+        </div>
+
+        <div class="admin-login-panel">
+          <div class="admin-login-icon">👨🏻</div>
+
+          <h3>Electoral Administrator</h3>
+
+          <p>
+            Connect the premade admin MetaMask wallet to access election
+            management functions.
+          </p>
+
+          <button
+            type="button"
+            id="adminLoginButton"
+            class="primary-btn full-btn"
+          >
+            Connect Admin Wallet
+          </button>
+
+          <div id="adminLoginStatus" class="admin-login-status">
+            Admin wallet not verified.
+          </div>
+
+          <p class="helper-text">
+            Access must be verified against the deployed smart contract
+            administrator.
+          </p>
+        </div>
+      </section>
+
+      <!-- ADMIN DASHBOARD -->
+      <section id="admin" class="section">
+        <div class="section-title">
+          <span>ELECTION MANAGEMENT</span>
+          <h2>Electoral Admin Dashboard</h2>
+          <p>Manage candidates, authorize voters, and control the election.</p>
+        </div>
+
+        <div class="admin-notice">
+          <strong>Administrator Access Required</strong>
+          <p>
+            Only the designated Electoral Admin wallet should be able to execute
+            these operations. The smart contract must enforce administrator
+            permissions.
+          </p>
+        </div>
+
+        <div class="admin-grid">
+          <!-- ADD CANDIDATE -->
+          <div class="panel">
+            <div class="panel-icon">＋</div>
+
+            <h3>Add Candidate</h3>
+
+            <p class="panel-description">
+              Add a new candidate to the election.
+            </p>
+
+            <label for="candidateName"> Candidate Name </label>
+
+            <input
+              type="text"
+              id="candidateName"
+              placeholder="Enter candidate name"
+            />
+
+            <label for="candidatePosition"> Position </label>
+
+            <input
+              type="text"
+              id="candidatePosition"
+              placeholder="Enter position"
+            />
+
+            <button
+              type="button"
+              id="addCandidateButton"
+              class="primary-btn full-btn"
+              disabled
+            >
+              Add Candidate
+            </button>
+          </div>
+
+          <!-- AUTHORIZE VOTER -->
+          <div class="panel">
+            <div class="panel-icon">✓</div>
+
+            <h3>Authorize Voter</h3>
+
+            <p class="panel-description">
+              Allow a student's wallet to participate in the election.
+            </p>
+
+            <label for="voterAddress"> Voter Wallet Address </label>
+
+            <input
+              type="text"
+              id="voterAddress"
+              placeholder="0x... Enter wallet address"
+            />
+
+            <button
+              type="button"
+              id="authorizeVoterButton"
+              class="primary-btn full-btn"
+              disabled
+            >
+              Authorize Voter
+            </button>
+          </div>
+
+          <!-- ELECTION CONTROL -->
+          <div class="panel">
+            <div class="panel-icon">⚙</div>
+
+            <h3>Election Control</h3>
+
+            <p class="panel-description">
+              Manage the opening and closing of the election.
+            </p>
+
+            <div class="control-status">
+              Current Election Status
+              <strong id="adminElectionStatus"> Not Started </strong>
+            </div>
+
+            <button
+              type="button"
+              id="startElectionButton"
+              class="start-btn full-btn"
+              disabled
+            >
+              Start Voting
+            </button>
+
+            <button
+              type="button"
+              id="endElectionButton"
+              class="end-btn full-btn"
+              disabled
+            >
+              Close Election
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-brand">CampusVote</div>
+
+      <p>Your voice. Your vote. Your campus.</p>
+
+      <div class="footer-line"></div>
+
+      <small> © 2026 CampusVote | Decentralized Voting Application </small>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="app.js"></script>
+
+    <!--DEV Atlassian Group-->
+  </body>
+</html>
